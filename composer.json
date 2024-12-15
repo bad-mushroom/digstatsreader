@@ -1,0 +1,32 @@
+{
+    "name": "badmushroom/digstatsreader",
+    "description": "Tool for parsing Minecraft's NBT (Named Bindary Tag) data files.",
+    "keywords": [
+        "minecraft",
+        "nbt",
+        "stats",
+        "parser"
+    ],
+    "authors": [
+        {
+            "name": "Chris Sprague",
+            "email": "chris@chaoscontrol.org",
+            "homepage": "https://chaoscontrol.org",
+            "role": "Blockhead"
+        }
+    ],
+    "type": "library",
+    "license": "MIT",
+    "readme": "README.md",
+    "autoload": {
+        "psr-4": {
+            "BadMushroom\\DigStatsReader\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+
+    }
+}
