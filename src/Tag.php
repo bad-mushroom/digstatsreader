@@ -1,6 +1,6 @@
 <?php
 
-namespace badmushroom\DigStatsReader;
+namespace BadMushroom\DigStatsReader;
 
 /**
  * Class Tag

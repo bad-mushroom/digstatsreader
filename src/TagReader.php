@@ -1,6 +1,6 @@
 <?php
 
-namespace badmushroom\DigStatsReader;
+namespace BadMushroom\DigStatsReader;
 
 use Exception;
 
@@ -45,9 +45,33 @@ class TagReader
     }
 
     /**
+     * Create a new TagReader instance from a Gzip-compressed file.
+     */
+    public static function fromDatFile(string $filePath): self
+    {
+        $data = file_get_contents($filePath);
+
+        if ($data === false) {
+            throw new Exception("Failed to read file: $filePath");
+        }
+
+        $decompressedData = gzdecode($data);
+
+        if ($decompressedData === false) {
+            throw new Exception("Failed to decompress Gzip file: $filePath");
+        }
+
+        $handle = fopen('php://memory', 'r+');
+        fwrite($handle, $decompressedData);
+        rewind($handle);
+
+        return new self($handle);
+    }
+
+    /**
      * Read a tag from the handle.
      */
-    public function readTag(): Tag
+    public function readTag(): ?Tag
     {
         $type = ord($this->readBytes(1));
 
