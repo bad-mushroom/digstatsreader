@@ -5,8 +5,10 @@ Library for reading Minecraft's NBT data.
 ## Example Usage
 
 ```
-$handle = fopen('/full/path/level.dat', 'rb');
-$reader = new TagReader($handle);
+use BadMushroom\DigStatsReader;
+
+$filePath = '/Full/Path/To/level.dat';
+$reader = DigStatsReader\TagReader::fromDatFile($filePath);
 
 try {
     while (($tag = $reader->readTag()) !== null) {
@@ -14,8 +16,6 @@ try {
     }
 } catch (\Exception $e) {
     print($e->getMessage());
-} finally {
-    fclose($handle);
 }
 ```
 
