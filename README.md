@@ -4,6 +4,21 @@ Library for reading Minecraft's NBT data.
 
 ## Example Usage
 
+```
+$handle = fopen('/full/path/level.dat', 'rb');
+$reader = new TagReader($handle);
+
+try {
+    while (($tag = $reader->readTag()) !== null) {
+        print_r($tag);
+    }
+} catch (\Exception $e) {
+    print($e->getMessage());
+} finally {
+    fclose($handle);
+}
+```
+
 ## Technical Notes
 
 ### NBT (Named Binary Tag)
